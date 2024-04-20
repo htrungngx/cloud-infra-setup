@@ -70,31 +70,4 @@ resource "azurerm_linux_virtual_machine" "k8s-worker" {
   tags = {
     environment = "k8s-cluster"
   }
-
-	# provisioner "file" {
-  #   connection {
-  #     host = self.public_ip_address
-  #     user = self.admin_username
-  #     type = "ssh"
-  #     private_key = file(local.ssh_private_key_name)
-  #     timeout = "4m"
-  #     agent = false
-  #   }
-  #     source = "examples/script"
-  #     destination = "/tmp/script"
-  # }
-
-  # provisioner "remote-exec" {
-  #   connection {
-  #     host = self.public_ip_address
-  #     user = self.admin_username
-  #     type = "ssh"
-  #     private_key = file(local.ssh_private_key_name)
-  #     timeout = "4m"
-  #     agent = false
-  #   }
-
-  #     inline = [
-  #     ]
-  # }
 }

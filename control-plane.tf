@@ -161,7 +161,7 @@ resource "azurerm_linux_virtual_machine" "k8s-control-plane" {
       host = self.public_ip_address
       user = self.admin_username
       type = "ssh"
-      private_key = file("/Users/htrung/gitops/examples/ansible/htrung")
+      private_key = file("SSH_KEY_FILE_PATH")
       timeout = "4m"
       agent = false
     }
@@ -174,7 +174,7 @@ resource "azurerm_linux_virtual_machine" "k8s-control-plane" {
       host = self.public_ip_address
       user = self.admin_username
       type = "ssh"
-      private_key = file("/Users/htrung/gitops/examples/ansible/htrung")
+      private_key = file("SSH_KEY_FILE_PATH")
       timeout = "4m"
       agent = false
     }
@@ -184,114 +184,4 @@ resource "azurerm_linux_virtual_machine" "k8s-control-plane" {
    }
 }
 
-  # provisioner "remote-exec" {
-  #   connection {
-  #     host = self.public_ip_address
-  #     user = "root"
-  #     type = "ssh"
-  #     private_key = file(local.ssh_private_key_name)
-  #     timeout = "4m"
-  #     agent = false
-  #   }
-  #     inline = [
-  #       "echo '10.0.0.1  node1' >> /etc/hosts"
-  #       # "echo 'yes' | ssh-copy-id ${azurerm_network_interface.worker-nic.*.private_ip_address}"
-  #     ]
-  # }
-
-
-
-# resource "azurerm_ssh_public_key" "ssh-key" {
-#   name                = "myssh-key"
-#   resource_group_name = azurerm_resource_group.my_project.name
-#   location            = azurerm_resource_group.myproject.location
-#   public_key          = file(var.ssh_key_name)
-# }
-
-# resource "azurerm_virtual_machine" "myproject-vm" {
-#   name                  = "${var.vm_name}-cp"
-#   location              = azurerm_resource_group.myproject.location
-#   resource_group_name   = azurerm_resource_group.myproject.name
-#   network_interface_ids = [azurerm_network_interface.myproject-nic.id]
-#   vm_size               = "Standard_DS1_v2"
-
-
-#   # Uncomment this line to delete the OS disk automatically when deleting the VM
-#   delete_os_disk_on_termination = true
-
-#   # Uncomment this line to delete the data disks automatically when deleting the VM
-#   delete_data_disks_on_termination = true
-
-#   storage_image_reference {
-#     publisher = "Canonical"
-#     offer     = "0001-com-ubuntu-server-focal"
-#     sku       = "20_04-lts-gen2"
-#     version   = "latest"
-#   }
-#   storage_os_disk {
-#     name              = "myosdisk1"
-#     caching           = "ReadWrite"
-#     create_option     = "FromImage"
-#     managed_disk_type = "Standard_LRS"
-#   }
-
-#   os_profile {
-#     computer_name = "control-plane"
-#     admin_username   = "tuananh"
-#   }
-
-#   os_profile_linux_config {
-#     disable_password_authentication = true
-
-#     ssh_keys {
-#       path = "C:/Users/Tuan Anh/.ssh"
-#       key_data = file("C:/Users/Tuan Anh/.ssh/id_rsa.pub")
-#     }
-#   }
-
-#   tags = {
-#     environment = "k8s-cluster"
-#   }
-# }
-
-
-# Create SSH key
-# resource "tls_private_key" "myproject-ssh" {
-#   algorithm = "RSA"
-#   rsa_bits  = 4096
-# }
-
-# output "tls_private_key" { 
-#   value = tls_private_key.myproject-ssh.private_key_pem 
-#   sensitive = true
-# }
-
-# Chose image linux
-# provision vm linux
-
-
-# resource "azurerm_virtual_machine_extension" "example" {
-#   name                 = var.vm_extension_name
-#   virtual_machine_id   = azurerm_virtual_machine.myproject-vm.id
-#   publisher            = "Microsoft.Azure.Extensions"
-#   type                 = "CustomScript"
-#   type_handler_version = "2.0"
-
-
-#   provisioner "file" {
-#     source = var.scfile
-#     destination = "/tmp/installfusion.sh"
-#   }
-
-#   provisioner "remote-exec" {
-#     inline = [
-#       "sudo chmod a+x /tmp/installfusion.sh",
-#       "sudo /tmp && ./intallfusion.sh"
-#     ]
-#   }
-
-#   tags = {
-#     environment = "Production"
-#   }
-# }
-
+  

@@ -13,6 +13,3 @@ output "private_ip_cp" {
 output "private_ip_worker" {
   value = "${azurerm_network_interface.worker-nic.*.private_ip_address}"
 }
-# output "ip-private" {
-#   value = "${azurerm_network_interface.worker-nic.count.index+1.private_ip_address}"
-# }

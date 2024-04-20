@@ -1,5 +1,5 @@
 # Local .terraform directories
-**/.terraform/*
+.terraform
 
 # .tfstate files
 *.tfstate
@@ -41,8 +41,9 @@ terraform.rc
 
 #ignore Terraform backup
 .terraform.tfstate.backup
-
-
+htrung
+*.pub
+*.pem
 *.key
 *.keys
 *.priv
@@ -51,7 +52,5 @@ terraform.rc
 
 .env
 .env.production
-*.ssh
-*.ssh-key
 
 testing/
