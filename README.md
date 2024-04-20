@@ -1,9 +1,13 @@
 # Project Overview 
 This project is a concept of Infrastructure as Code and to Provision VMs on Azure 
 
+## Project Goal
+- Understand Infrastructure as Code Concept (Terraform, Ansible)
+- Learning Azure
+- Use for further projects 
+
 # Diagram 
 ![example](images/diagram.png)
-
 
 # Instruction
 ## Clone
